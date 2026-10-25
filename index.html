@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ice Cream Cake | Two favorite desserts in one affordable cake</title>
+<meta name="description" content="Affordable ice cream cakes in Cebu for birthdays, celebrations, and family gatherings. Pick a size, choose a flavor, and send your order.">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap">
+
+<!-- PyScript runtime (all page behavior below is written in Python) -->
+<link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Ice Cream Cake</a>
+    <ul>
+      <li><a href="#menu">Sizes and prices</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <a class="btn small" href="#order">Order a cake</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Two favorite desserts in one affordable cake.</h1>
+        <p class="lead">Soft cake layers, creamy ice cream, and toppings you choose. Made for birthdays, family gatherings, and any day that deserves a treat. Cakes start at ₱199.</p>
+        <div class="cta">
+          <a class="btn" href="#order">Order your cake</a>
+          <a class="btn ghost" href="#menu">See sizes and prices</a>
+          <button class="btn ghost" type="button" id="watch-ad">Watch our ad</button>
+        </div>
+
+        <div class="picker">
+          <h2>Choose a flavor</h2>
+          <div class="chips">
+            <button class="chip" type="button" id="btn-chocolate" aria-pressed="true"><i></i>Chocolate</button>
+            <button class="chip" type="button" id="btn-vanilla" aria-pressed="false"><i></i>Vanilla</button>
+            <button class="chip" type="button" id="btn-strawberry" aria-pressed="false"><i></i>Strawberry</button>
+            <button class="chip" type="button" id="btn-ube" aria-pressed="false"><i></i>Ube</button>
+            <button class="chip" type="button" id="btn-mango" aria-pressed="false"><i></i>Mango</button>
+          </div>
+          <div class="flavor-note" aria-live="polite">
+            <h3 id="flavor-name">Chocolate</h3>
+            <p id="flavor-blurb">Fudgy cocoa cake, chocolate ice cream, and a chocolate drip. Our most requested flavor.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage" id="stage" data-flavor="chocolate">
+        <div class="cake" role="img" aria-label="Illustration of a layered ice cream cake with whipped cream rosettes, a cherry, and sprinkles">
+          <svg class="cake-svg" viewBox="0 0 320 330" aria-hidden="true" focusable="false">
+            <defs>
+              <clipPath id="cakeBody"><path d="M40 112 V262 A120 24 0 0 0 280 262 V112 Z"/></clipPath>
+              <linearGradient id="shade" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#000" stop-opacity=".34"/>
+                <stop offset=".22" stop-color="#000" stop-opacity=".04"/>
+                <stop offset=".38" stop-color="#fff" stop-opacity=".24"/>
+                <stop offset=".56" stop-color="#fff" stop-opacity="0"/>
+                <stop offset="1" stop-color="#000" stop-opacity=".4"/>
+              </linearGradient>
+              <radialGradient id="topHi" cx=".36" cy=".3" r=".75">
+                <stop offset="0" stop-color="#fff" stop-opacity=".6"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="cream" cx=".36" cy=".3" r=".8">
+                <stop offset="0" stop-color="#fffdf8"/>
+                <stop offset="1" stop-color="#f1dccf"/>
+              </radialGradient>
+              <radialGradient id="cherryG" cx=".35" cy=".3" r=".8">
+                <stop offset="0" stop-color="#ff6a7a"/>
+                <stop offset=".45" stop-color="#d4112f"/>
+                <stop offset="1" stop-color="#7d0618"/>
+              </radialGradient>
+            </defs>
+
+            <ellipse cx="160" cy="304" rx="140" ry="13" fill="#3a1f1d" opacity=".16"/>
+            <ellipse cx="160" cy="280" rx="148" ry="26" fill="#fff" stroke="#ecd9dc" stroke-width="2"/>
+            <ellipse cx="160" cy="277" rx="126" ry="20" fill="#fbf3f5" stroke="#ecd9dc" stroke-width="1.5"/>
+
+            <g clip-path="url(#cakeBody)">
+              <rect class="c-sponge" x="30" y="100" width="260" height="200"/>
+              <g fill="#000" opacity=".14">
+                <circle cx="60" cy="170" r="2"/><circle cx="95" cy="180" r="1.6"/><circle cx="130" cy="168" r="2.2"/>
+                <circle cx="170" cy="182" r="1.8"/><circle cx="205" cy="172" r="2"/><circle cx="240" cy="184" r="1.6"/>
+                <circle cx="262" cy="166" r="2"/><circle cx="58" cy="250" r="2"/><circle cx="92" cy="262" r="2.2"/>
+                <circle cx="128" cy="252" r="1.8"/><circle cx="165" cy="268" r="2"/><circle cx="200" cy="256" r="1.6"/>
+                <circle cx="236" cy="264" r="2.2"/><circle cx="262" cy="250" r="1.8"/><circle cx="110" cy="276" r="1.6"/>
+                <circle cx="190" cy="277" r="2"/>
+              </g>
+              <path class="c-ice" stroke="#000" stroke-opacity=".14" stroke-width="1.5"
+                d="M30 100 H330 V156 Q305 166 280 156 T230 156 T180 156 T130 156 T80 156 T30 156 Z"/>
+              <path class="c-ice" stroke="#000" stroke-opacity=".14" stroke-width="1.5"
+                d="M30 193 Q55 184 80 193 T130 193 T180 193 T230 193 T280 193 T330 193 V236 Q305 246 280 236 T230 236 T180 236 T130 236 T80 236 T30 236 Z"/>
+              <g fill="#fff" opacity=".3">
+                <circle cx="60" cy="146" r="1.6"/><circle cx="100" cy="150" r="1.4"/><circle cx="150" cy="152" r="1.6"/>
+                <circle cx="200" cy="148" r="1.4"/><circle cx="250" cy="150" r="1.6"/>
+                <circle cx="70" cy="212" r="1.6"/><circle cx="120" cy="222" r="1.4"/><circle cx="175" cy="212" r="1.6"/>
+                <circle cx="230" cy="222" r="1.4"/><circle cx="262" cy="210" r="1.6"/><circle cx="150" cy="226" r="1.4"/>
+              </g>
+              <rect x="30" y="100" width="260" height="200" fill="url(#shade)"/>
+            </g>
+
+            <g class="drips">
+              <path class="c-icel drip" d="M62 118 V152 a9 9 0 0 0 18 0 V118 Z"/>
+              <path class="c-icel drip d2" d="M104 122 V176 a10 10 0 0 0 20 0 V122 Z"/>
+              <path class="c-icel drip d3" d="M170 126 V160 a8 8 0 0 0 16 0 V126 Z"/>
+              <path class="c-icel drip d4" d="M214 124 V184 a10 10 0 0 0 20 0 V124 Z"/>
+              <path class="c-icel drip d5" d="M252 118 V150 a8 8 0 0 0 16 0 V118 Z"/>
+              <g fill="#fff" opacity=".4">
+                <rect x="66" y="128" width="3" height="18" rx="1.5"/><rect x="108" y="132" width="3" height="32" rx="1.5"/>
+                <rect x="173" y="134" width="3" height="16" rx="1.5"/><rect x="218" y="132" width="3" height="38" rx="1.5"/>
+                <rect x="255" y="126" width="3" height="16" rx="1.5"/>
+              </g>
+            </g>
+
+            <ellipse class="c-icel" cx="160" cy="112" rx="120" ry="26"/>
+            <ellipse cx="160" cy="112" rx="120" ry="26" fill="url(#topHi)"/>
+            <ellipse cx="160" cy="112" rx="120" ry="26" fill="none" stroke="#000" stroke-opacity=".1" stroke-width="1.5"/>
+
+            <g>
+              <g transform="translate(254 119)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(231 126)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(194 131)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(160 132)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(126 131)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(89 126)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+              <g transform="translate(66 119)"><circle r="13" fill="url(#cream)" stroke="#e6cdbf"/><circle r="8" fill="none" stroke="#e6cdbf" stroke-width="1.6"/><circle r="3.5" fill="none" stroke="#e6cdbf" stroke-width="1.6"/></g>
+            </g>
+
+            <rect x="96" y="102" width="12" height="4" rx="2" fill="#ffb52e" transform="rotate(25 102 104)"/>
+            <rect x="122" y="116" width="12" height="4" rx="2" fill="#fff" transform="rotate(-30 128 118)"/>
+            <rect x="204" y="104" width="12" height="4" rx="2" fill="#4fb3d9" transform="rotate(50 210 106)"/>
+            <rect x="228" y="114" width="12" height="4" rx="2" fill="#ffb52e" transform="rotate(-15 234 116)"/>
+            <rect x="80" y="113" width="12" height="4" rx="2" fill="#7ed07e" transform="rotate(70 86 115)"/>
+            <rect x="184" y="118" width="12" height="4" rx="2" fill="#e8426e" transform="rotate(20 190 120)"/>
+            <rect x="140" y="104" width="12" height="4" rx="2" fill="#4fb3d9" transform="rotate(-45 146 106)"/>
+            <rect x="250" y="106" width="12" height="4" rx="2" fill="#fff" transform="rotate(35 256 108)"/>
+
+            <ellipse cx="160" cy="108" rx="14" ry="4" fill="#000" opacity=".16"/>
+            <path d="M160 82 Q165 64 182 58" stroke="#4a6b2a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <circle cx="160" cy="95" r="15" fill="url(#cherryG)"/>
+            <ellipse cx="154" cy="89" rx="4.5" ry="3" fill="#fff" opacity=".75"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sizes and prices -->
+  <section id="menu" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <h2>Pick the size that fits your celebration</h2>
+        <p>Every cake has layers of cake and ice cream, finished with toppings like chocolate, cookies, fruits, and sprinkles.</p>
+      </div>
+      <ul class="sizes" id="menu-list">
+        <li class="loading">Loading the menu... If this message stays, open the website with Live Server or GitHub Pages, not by double-clicking the file.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section id="order">
+    <div class="wrap">
+      <div class="head">
+        <h2>Build your order</h2>
+        <p>Choose your cake, then copy the message and send it to us on Messenger. We will confirm the date and the details with you.</p>
+      </div>
+      <div class="order-grid">
+        <div class="form">
+          <label>Cake size
+            <select class="field" id="size"><option>Loading...</option></select>
+          </label>
+          <label>Flavor
+            <select class="field" id="flavor"><option>Loading...</option></select>
+          </label>
+          <div class="row add-row">
+            <label>How many of this cake
+              <input class="field" id="qty" type="number" min="1" max="20" value="1" inputmode="numeric">
+            </label>
+            <button class="btn" type="button" id="add-cake">Add to my order</button>
+          </div>
+          <p class="add-status" id="add-status" aria-live="polite">Add as many cakes as you like. Each one can have its own size and flavor.</p>
+          <label>Pickup or delivery
+            <select class="field" id="mode">
+              <option value="Pickup">Pickup</option>
+              <option value="Delivery">Delivery</option>
+            </select>
+          </label>
+          <div class="row">
+            <label>Your name
+              <input class="field" id="cust" type="text" placeholder="Juan Dela Cruz" autocomplete="name">
+            </label>
+            <label>Date you need it
+              <input class="field" id="when" type="date">
+            </label>
+          </div>
+          <label>Cake message or design notes (optional)
+            <textarea class="field" id="note" placeholder="Example: Happy Birthday, Maria! Extra chocolate toppings."></textarea>
+          </label>
+        </div>
+
+        <div class="receipt">
+          <h3>Your order</h3>
+          <ul class="cart-list" id="cart-list">
+            <li class="cart-empty">No cakes yet. Choose a size and flavor, then press Add to my order.</li>
+          </ul>
+          <div class="total">
+            <strong id="total">₱0</strong>
+            <span id="total-note"></span>
+          </div>
+          <p class="hint">The final price is confirmed when we reply to your message.</p>
+          <label for="summary" style="font-weight:700">Message to send</label>
+          <textarea class="field" id="summary" readonly></textarea>
+          <div class="actions">
+            <button class="btn ghost" type="button" id="select-msg">Select the message to copy</button>
+            <a class="btn" href="https://www.facebook.com/search/top?q=Syrell%20Booc" target="_blank" rel="noopener">Send it on Facebook</a>
+          </div>
+          <p class="hint" style="margin-top:12px;margin-bottom:0">Phone orders: <a href="tel:09926537275"><strong>09926537275</strong></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <h2>How ordering works</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Build your order</h3>
+          <p>Choose a size, flavor, and date above, then copy the message that appears.</p>
+        </li>
+        <li>
+          <h3>Send it on Messenger</h3>
+          <p>Paste it in a message to <a href="https://www.facebook.com/search/top?q=Syrell%20Booc" target="_blank" rel="noopener"><strong>Syrell Booc on Facebook</strong></a>. We reply to confirm availability, the final price, and your pickup or delivery plan.</p>
+        </li>
+        <li>
+          <h3>Enjoy your cake</h3>
+          <p>Your cake is packed in insulated packaging so it stays frozen on the way to your celebration.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Flavor votes -->
+  <section id="votes">
+    <div class="wrap">
+      <div class="head">
+        <h2>Chocolate is the crowd favorite</h2>
+        <p>We asked 46 students and young adults in Cebu which flavor they like best. Chocolate won by a wide margin, so it leads our menu, with ube, vanilla, strawberry, and mango alongside it.</p>
+      </div>
+      <div class="bars" id="bars"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <h2>Questions before you order</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Can I order a custom design?</summary>
+          <p>Yes. Choose the Customized Large cake (10-inch, ₱799) and describe the message or design you want in the notes box. We will confirm what we can make.</p>
+        </details>
+        <details>
+          <summary>How early should I order?</summary>
+          <p>As early as you can. Tell us the date you need the cake in your message and we will confirm whether we can make it.</p>
+        </details>
+        <details>
+          <summary>Do you deliver?</summary>
+          <p>Yes, in selected areas around Cebu. To keep your cake from melting, we may limit the delivery distance, and on very hot days we may ask you to pick up your order instead.</p>
+        </details>
+        <details>
+          <summary>How should I store the cake?</summary>
+          <p>Keep it in the freezer until you are ready to serve. Let it sit for a few minutes before slicing so the cut is clean.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot-top">
+    <div>
+      <span class="brand">Ice Cream Cake</span>
+      <p class="foot-tag">Two favorite desserts in one affordable cake. Cebu, Philippines.</p>
+    </div>
+    <div>
+      <h3>Connect with us</h3>
+      <p>Phone: <a href="tel:09926537275">09926537275</a></p>
+      <p>Facebook: <a href="https://www.facebook.com/search/top?q=Syrell%20Booc" target="_blank" rel="noopener">Syrell Booc</a></p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>&copy; 2026 Ice Cream Cake. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<dialog id="ad" aria-labelledby="ad-title">
+  <div class="ad-head">
+    <h2 id="ad-title">Ice Cream Cake</h2>
+    <button class="ad-close" type="button" id="ad-close">Close</button>
+  </div>
+  <div class="ad-media" id="ad-media"></div>
+  <div class="ad-foot">
+    <p>Cakes start at ₱199. Order today!</p>
+    <a class="btn small" id="ad-order" href="#order">Order a cake</a>
+  </div>
+</dialog>
+
+<template id="ad-template">
+  <div class="adshow">
+    <div class="slide sl1">
+      <div class="txt">
+        <p class="hook">Can't pick between cake and ice cream?</p>
+        <p class="hook2">Don't. Get both.</p>
+        <p class="meta"><span class="tag">From ₱199</span> Order: 09926537275</p>
+      </div>
+      <div class="cakebox"><svg viewBox="0 0 240 250" role="img" aria-label="Illustration of a layered ice cream cake with a cherry on top">
+<ellipse cx="120" cy="196" rx="108" ry="18" fill="#FFFFFF"/>
+<path d="M30 84 V180 A90 18 0 0 0 210 180 V84 Z" fill="#3A1F1D"/>
+<path d="M30 84 H210 V116 Q195 126 180 116 T150 116 T120 116 T90 116 T60 116 T30 116 Z" fill="#6B3F2E"/>
+<path d="M30 144 Q45 136 60 144 T90 144 T120 144 T150 144 T180 144 T210 144 V170 Q195 178 180 170 T150 170 T120 170 T90 170 T60 170 T30 170 Z" fill="#6B3F2E"/>
+<rect x="42" y="88" width="12" height="84" rx="6" fill="#FFFFFF" opacity=".2"/>
+<path d="M54 90 V120 a7 7 0 0 0 14 0 V90 Z M96 92 V138 a8 8 0 0 0 16 0 V92 Z M150 92 V126 a7 7 0 0 0 14 0 V92 Z M184 90 V118 a7 7 0 0 0 14 0 V90 Z" fill="#8A5A45"/>
+<ellipse cx="120" cy="84" rx="90" ry="20" fill="#8A5A45"/>
+<g fill="#FFF7F0" stroke="#E6CDBF"><circle cx="52" cy="92" r="9"/><circle cx="86" cy="100" r="9"/><circle cx="120" cy="103" r="9"/><circle cx="154" cy="100" r="9"/><circle cx="188" cy="92" r="9"/></g>
+<g fill="#FFB52E"><rect x="76" y="76" width="10" height="4" rx="2" transform="rotate(25 81 78)"/><rect x="150" y="74" width="10" height="4" rx="2" transform="rotate(-30 155 76)"/></g>
+<g fill="#4FB3D9"><rect x="100" y="86" width="10" height="4" rx="2" transform="rotate(60 105 88)"/><rect x="170" y="82" width="10" height="4" rx="2" transform="rotate(10 175 84)"/></g>
+<path d="M120 58 Q124 44 138 40" stroke="#4A6B2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="70" r="12" fill="#C8102E"/><ellipse cx="115" cy="65" rx="3.5" ry="2.5" fill="#FFFFFF" opacity=".75"/>
+</svg></div>
+    </div>
+    <div class="slide sl2">
+      <div class="cakebox"><svg viewBox="0 0 240 250" role="img" aria-label="Illustration of a layered ice cream cake with a cherry on top">
+<ellipse cx="120" cy="196" rx="108" ry="18" fill="#F0CFD7"/>
+<path d="M30 84 V180 A90 18 0 0 0 210 180 V84 Z" fill="#E4D8F7"/>
+<path d="M30 84 H210 V116 Q195 126 180 116 T150 116 T120 116 T90 116 T60 116 T30 116 Z" fill="#9C7CD4"/>
+<path d="M30 144 Q45 136 60 144 T90 144 T120 144 T150 144 T180 144 T210 144 V170 Q195 178 180 170 T150 170 T120 170 T90 170 T60 170 T30 170 Z" fill="#9C7CD4"/>
+<rect x="42" y="88" width="12" height="84" rx="6" fill="#FFFFFF" opacity=".2"/>
+<path d="M54 90 V120 a7 7 0 0 0 14 0 V90 Z M96 92 V138 a8 8 0 0 0 16 0 V92 Z M150 92 V126 a7 7 0 0 0 14 0 V92 Z M184 90 V118 a7 7 0 0 0 14 0 V90 Z" fill="#B79BE6"/>
+<ellipse cx="120" cy="84" rx="90" ry="20" fill="#B79BE6"/>
+<g fill="#FFF7F0" stroke="#E6CDBF"><circle cx="52" cy="92" r="9"/><circle cx="86" cy="100" r="9"/><circle cx="120" cy="103" r="9"/><circle cx="154" cy="100" r="9"/><circle cx="188" cy="92" r="9"/></g>
+<g fill="#FFB52E"><rect x="76" y="76" width="10" height="4" rx="2" transform="rotate(25 81 78)"/><rect x="150" y="74" width="10" height="4" rx="2" transform="rotate(-30 155 76)"/></g>
+<g fill="#4FB3D9"><rect x="100" y="86" width="10" height="4" rx="2" transform="rotate(60 105 88)"/><rect x="170" y="82" width="10" height="4" rx="2" transform="rotate(10 175 84)"/></g>
+<path d="M120 58 Q124 44 138 40" stroke="#4A6B2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="70" r="12" fill="#C8102E"/><ellipse cx="115" cy="65" rx="3.5" ry="2.5" fill="#FFFFFF" opacity=".75"/>
+</svg></div>
+      <div class="txt">
+        <p class="title">Ice Cream Cake</p>
+        <div class="prices"><div class="prow"><span>Small <small>6-inch</small></span><b>₱199</b></div><div class="prow"><span>Medium <small>8-inch</small></span><b>₱399</b></div><div class="prow"><span>Large <small>10-inch</small></span><b>₱599</b></div><div class="prow"><span>Customized Large <small>10-inch</small></span><b>₱799</b></div></div>
+        <p class="hook3">One cake. Two favorites. Order yours today.</p>
+      </div>
+    </div>
+    <div class="slide sl3">
+      <div class="txt">
+        <p class="hook">Make every birthday cooler.</p>
+        <p class="pills"><span class="pill">Small ₱199</span><span class="pill">Medium ₱399</span><span class="pill">Large ₱599</span></p>
+        <p class="meta">Message Syrell Booc on Facebook to order</p>
+      </div>
+      <div class="cakebox"><svg viewBox="0 0 240 250" role="img" aria-label="Illustration of a layered ice cream cake with a cherry on top">
+<ellipse cx="120" cy="196" rx="108" ry="18" fill="#E4D8F7"/>
+<path d="M30 84 V180 A90 18 0 0 0 210 180 V84 Z" fill="#FFD3DD"/>
+<path d="M30 84 H210 V116 Q195 126 180 116 T150 116 T120 116 T90 116 T60 116 T30 116 Z" fill="#F6819F"/>
+<path d="M30 144 Q45 136 60 144 T90 144 T120 144 T150 144 T180 144 T210 144 V170 Q195 178 180 170 T150 170 T120 170 T90 170 T60 170 T30 170 Z" fill="#F6819F"/>
+<rect x="42" y="88" width="12" height="84" rx="6" fill="#FFFFFF" opacity=".2"/>
+<path d="M54 90 V120 a7 7 0 0 0 14 0 V90 Z M96 92 V138 a8 8 0 0 0 16 0 V92 Z M150 92 V126 a7 7 0 0 0 14 0 V92 Z M184 90 V118 a7 7 0 0 0 14 0 V90 Z" fill="#FFA7BC"/>
+<ellipse cx="120" cy="84" rx="90" ry="20" fill="#FFA7BC"/>
+<g fill="#FFF7F0" stroke="#E6CDBF"><circle cx="52" cy="92" r="9"/><circle cx="86" cy="100" r="9"/><circle cx="120" cy="103" r="9"/><circle cx="154" cy="100" r="9"/><circle cx="188" cy="92" r="9"/></g>
+<g fill="#FFB52E"><rect x="76" y="76" width="10" height="4" rx="2" transform="rotate(25 81 78)"/><rect x="150" y="74" width="10" height="4" rx="2" transform="rotate(-30 155 76)"/></g>
+<g fill="#4FB3D9"><rect x="100" y="86" width="10" height="4" rx="2" transform="rotate(60 105 88)"/><rect x="170" y="82" width="10" height="4" rx="2" transform="rotate(10 175 84)"/></g>
+<path d="M120 58 Q124 44 138 40" stroke="#4A6B2A" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="70" r="12" fill="#C8102E"/><ellipse cx="115" cy="65" rx="3.5" ry="2.5" fill="#FFFFFF" opacity=".75"/>
+</svg></div>
+    </div>
+    <div class="adbar"></div>
+  </div>
+</template>
+
+
+
+<!-- All interactive behavior is written in Python (PyScript / MicroPython). No JavaScript is used. -->
+<script type="mpy" src="main.py"></script>
+
+</body>
+</html>
